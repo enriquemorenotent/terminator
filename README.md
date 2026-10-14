@@ -1,5 +1,6 @@
-Terminator
-==========
+# Termino
+
+Termino is a fork of [Terminator](https://github.com/gnome-terminator/terminator) with a refreshed default appearance. Run from this checkout with `python3 terminator`.
 
 Started by Chris Jones <cmsj@tenshu.net> in 2007, maintained from 2014 to 2020 by Stephen Boddy, currently maintained by Matt Rose. Terminator has had contributions from countless others listed in the [AUTHORS](AUTHORS) file
 

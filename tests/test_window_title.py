@@ -50,4 +50,12 @@ def test_background_terminal_cannot_override_window_title():
     title.set_title(FakeTerminal(focused=False), "background terminal")
 
     assert title.text == "focused terminal"
-    assert window.titles == ["focused terminal"]
+    assert window.titles == ["focused terminal — Termino"]
+
+
+def test_explicit_window_title_is_preserved():
+    window = FakeWindow()
+    title = WindowTitle(window)
+    title.force_title('My workspace')
+    title.set_title(FakeTerminal(focused=True), 'shell title')
+    assert window.titles == ['My workspace']

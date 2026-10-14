@@ -455,7 +455,7 @@
   <object class="GtkWindow" id="prefswin">
     <property name="can-focus">False</property>
     <property name="border-width">6</property>
-    <property name="title" translatable="yes">Terminator Preferences</property>
+    <property name="title" translatable="yes">Termino Preferences</property>
     <property name="default-width">640</property>
     <property name="default-height">400</property>
     <signal name="destroy" handler="on_destroy_event" swapped="no"/>
@@ -4377,7 +4377,7 @@
                           <object class="GtkLabel" id="label26">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Terminator</property>
+                            <property name="label" translatable="yes">Termino</property>
                             <attributes>
                               <attribute name="size" value="30000"/>
                             </attributes>
@@ -4397,7 +4397,7 @@
                               <object class="GtkLabel" id="label28">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">The robot future of terminals</property>
+                                <property name="label" translatable="yes">A modern terminal, built on Terminator</property>
                               </object>
                             </child>
                           </object>

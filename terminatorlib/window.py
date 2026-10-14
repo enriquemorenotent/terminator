@@ -19,7 +19,7 @@ except ImportError:
 
 from . import util
 from .translation import _
-from .version import APP_NAME
+from .version import APP_NAME, APP_DISPLAY_NAME
 from .container import Container
 from .factory import Factory
 from .terminator import Terminator
@@ -1203,8 +1203,9 @@ class WindowTitle(object):
     def force_title(self, newtext):
         """Force a specific title"""
         if newtext:
-            self.set_title(None, newtext)
+            self.text = newtext
             self.forced = True
+            self.update()
         else:
             self.forced = False
 
@@ -1216,7 +1217,7 @@ class WindowTitle(object):
         if self.forced:
             title = self.text
         else:
-            title = "%s" % self.text
+            title = "%s — %s" % (self.text, APP_DISPLAY_NAME) if self.text else APP_DISPLAY_NAME
 
         self.window.set_title(title)
 

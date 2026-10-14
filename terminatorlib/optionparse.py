@@ -117,7 +117,7 @@ icon for the window (by file or name)'))
     options = parser.parse_args()
 
     if options.version:
-        print('%s %s' % (version.APP_NAME, version.APP_VERSION))
+        print('%s %s' % (version.APP_DISPLAY_NAME, version.APP_VERSION))
         sys.exit(0)
 
     if options.list_profiles:

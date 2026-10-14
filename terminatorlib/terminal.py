@@ -2244,7 +2244,7 @@ class Terminal(Gtk.VBox):
         dialog.set_resizable(False)
         dialog.set_border_width(8)
 
-        label = Gtk.Label(label=_('Enter a new title for the Terminator window...'))
+        label = Gtk.Label(label=_('Enter a new title for the Termino window...'))
         name = Gtk.Entry()
         name.set_activates_default(True)
         if window.title.text != self.vte.get_window_title():

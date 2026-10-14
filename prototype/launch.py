@@ -17,4 +17,4 @@ if not config.exists():
 # Appearance now comes entirely from the app itself.
 os.execv(sys.executable, [sys.executable, str(ROOT / 'terminator'),
                          '--no-dbus', '--config', str(config),
-                         '--title', 'Terminator — Visual prototype', *sys.argv[1:]])
+                         '--title', 'Termino — Demo', *sys.argv[1:]])

@@ -179,7 +179,7 @@ class PrefsEditor:
                         'group_tab_toggle' : _('Group/Ungroup terminals in tab'),
                         'ungroup_tab'      : _('Ungroup terminals in tab'),
                         'new_window'       : _('Create a new window'),
-                        'new_terminator'   : _('Spawn a new Terminator process'),
+                        'new_terminator'   : _('Spawn a new Termino process'),
                         'broadcast_off'    : _('Don\'t broadcast key presses'),
                         'broadcast_group'  : _('Broadcast key presses to group'),
                         'broadcast_all'    : _('Broadcast key events to all'),

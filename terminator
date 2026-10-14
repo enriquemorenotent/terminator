@@ -47,7 +47,7 @@ except ImportError:
 import terminatorlib.optionparse
 from terminatorlib.terminator import Terminator
 from terminatorlib.factory import Factory
-from terminatorlib.version import APP_NAME, APP_VERSION
+from terminatorlib.version import APP_NAME, APP_VERSION, APP_DISPLAY_NAME
 from terminatorlib.util import dbg, err
 from terminatorlib.layoutlauncher import LayoutLauncher
 from terminatorlib.configjson import ConfigJson
@@ -59,6 +59,7 @@ if __name__ == '__main__':
     dbg ("%s starting up, version %s" % (APP_NAME, APP_VERSION))
   
     GLib.set_prgname(APP_NAME)
+    GLib.set_application_name(APP_DISPLAY_NAME)
 
     OPTIONS,dbus_options = terminatorlib.optionparse.parse_options()
     if OPTIONS.configjson:
