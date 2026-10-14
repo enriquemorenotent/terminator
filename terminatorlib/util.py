@@ -207,10 +207,10 @@ def get_system_config_dir():
                 if os.path.isdir(sysconfdir):
                     system_config_dir = sysconfdir
                     break
-    return(os.path.join(system_config_dir,'terminator'))
+    return(os.path.join(system_config_dir,'terminator2'))
 
 def get_config_dir():
-    """Expand all the messy nonsense for finding where ~/.config/terminator
+    """Expand all the messy nonsense for finding where ~/.config/terminator2
     really is"""
     try:
         configdir = os.environ['XDG_CONFIG_HOME']
@@ -218,7 +218,7 @@ def get_config_dir():
         configdir = os.path.join(os.path.expanduser('~'), '.config')
 
     dbg('Found config dir: %s' % configdir)
-    return(os.path.join(configdir, 'terminator'))
+    return(os.path.join(configdir, 'terminator2'))
 
 def dict_diff(reference, working):
     """Examine the values in the supplied working set and return a new dict

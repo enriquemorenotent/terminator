@@ -235,9 +235,11 @@ class KeyBindUtil:
     map_all_act_to_keys = {}
     map_all_act_to_desc = {}
 
-    config = Config()
+    config = None
 
     def __init__(self, config=None):
+        # Delay settings loading until command-line options have been parsed.
+        KeyBindUtil.config = config if config is not None else Config()
         self.load_merge_key_maps()
 
     #Example

@@ -33,7 +33,7 @@ class Titlebar(Gtk.EventBox):
     grouplabel = None
     groupentry = None
     bellicon = None
-    compact_header = False
+    compact_header = True
     local_hostnames = {socket.gethostname(), socket.getfqdn(), 'localhost'}
 
     __gsignals__ = {

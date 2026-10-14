@@ -227,7 +227,7 @@ setup(name=APP_NAME,
           'psutil',
       ],
       extras_require={'test': test_deps},
-      package_data={'terminatorlib': ['preferences.glade', 'layoutlauncher.glade']},
+      package_data={'terminatorlib': ['preferences.glade', 'layoutlauncher.glade', 'appearance.css']},
       cmdclass={'build': BuildData, 'install_data': InstallData, 'uninstall': Uninstall},
       distclass=TerminatorDist)
 

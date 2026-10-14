@@ -100,7 +100,11 @@ class Terminator(Borg):
 
     def connect_signals(self):
         """Connect all the gtk signals"""
+        if self.gtk_settings is not None:
+            return
         self.gtk_settings=Gtk.Settings().get_default()
+        self.gtk_settings.set_property('gtk-application-prefer-dark-theme', True)
+        self.gtk_settings.set_property('gtk-theme-name', 'Adwaita')
         self.gtk_settings.connect('notify::gtk-theme-name', self.on_gtk_theme_name_notify)
         self.cur_gtk_theme_name = self.gtk_settings.get_property('gtk-theme-name')
 
@@ -483,6 +487,12 @@ class Terminator(Borg):
                 """ % (self.config['handle_size'],self.config['handle_size'])
         style_provider = Gtk.CssProvider()
         style_provider.load_from_data(css.encode('utf-8'))
+        self.style_providers.append(style_provider)
+
+        # Load the fork's appearance last so desktop theme tweaks cannot hide it.
+        style_provider = Gtk.CssProvider()
+        style_provider.load_from_path(os.path.join(os.path.dirname(__file__),
+                                                   'appearance.css'))
         self.style_providers.append(style_provider)
 
         # Apply the providers, incrementing priority so they don't cancel out
