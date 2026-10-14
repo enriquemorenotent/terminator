@@ -193,6 +193,7 @@ setup(name=APP_NAME,
       license='GNU GPL v2',
       scripts=['terminator', 'remotinator'],
       data_files=[
+                  ('share/icons/hicolor/scalable/apps', ['terminatorlib/icons/termino.svg']),
                   ('share/applications', ['data/terminator.desktop']),
                   ('share/metainfo', ['data/terminator.metainfo.xml']),
                   (os.path.join(man_dir, 'man1'), ['doc/terminator.1']),
@@ -227,7 +228,7 @@ setup(name=APP_NAME,
           'psutil',
       ],
       extras_require={'test': test_deps},
-      package_data={'terminatorlib': ['preferences.glade', 'layoutlauncher.glade', 'appearance.css']},
+      package_data={'terminatorlib': ['preferences.glade', 'layoutlauncher.glade', 'appearance.css', 'icons/*.svg']},
       cmdclass={'build': BuildData, 'install_data': InstallData, 'uninstall': Uninstall},
       distclass=TerminatorDist)
 

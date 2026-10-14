@@ -19,7 +19,7 @@ except ImportError:
 
 from . import util
 from .translation import _
-from .version import APP_NAME, APP_DISPLAY_NAME
+from .version import APP_DISPLAY_NAME, APP_ICON_NAME
 from .container import Container
 from .factory import Factory
 from .terminator import Terminator
@@ -184,7 +184,7 @@ class Window(Container, Gtk.Window):
     def apply_icon(self, requested_icon):
         """Set the window icon"""
         icon_theme = Gtk.IconTheme.get_default()
-        icon_name_list = [APP_NAME]   # disable self.wmclass_name, n/a in GTK3
+        icon_name_list = [APP_ICON_NAME]
 
         if requested_icon:
             try:

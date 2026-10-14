@@ -4346,7 +4346,7 @@
                     <property name="xalign">1</property>
                     <property name="yalign">1</property>
                     <property name="pixel-size">128</property>
-                    <property name="icon-name">terminator</property>
+                    <property name="icon-name">termino</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>

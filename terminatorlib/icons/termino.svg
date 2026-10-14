@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <title>Termino</title>
+  <desc>A blue command pane beside two charcoal panes, inside a rounded terminal window.</desc>
+  <rect x="4" y="8" width="120" height="116" rx="26" fill="#10151e"/>
+  <rect x="4" y="4" width="120" height="116" rx="26" fill="#29364b"/>
+  <rect x="12" y="12" width="104" height="100" rx="19" fill="#171b24"/>
+  <path d="M31 20h43v84H31a11 11 0 0 1-11-11V31a11 11 0 0 1 11-11Z" fill="#8eb8f5"/>
+  <path d="M82 20h15a11 11 0 0 1 11 11v27H82Z" fill="#3b5272"/>
+  <path d="M82 66h26v27a11 11 0 0 1-11 11H82Z" fill="#2a3850"/>
+  <path d="m33 44 12 12-12 12" fill="none" stroke="#171b24" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48 76h13" fill="none" stroke="#171b24" stroke-width="6" stroke-linecap="round"/>
+</svg>

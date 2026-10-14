@@ -102,6 +102,8 @@ class Terminator(Borg):
         """Connect all the gtk signals"""
         if self.gtk_settings is not None:
             return
+        Gtk.IconTheme.get_default().append_search_path(
+            os.path.join(os.path.dirname(__file__), 'icons'))
         self.gtk_settings=Gtk.Settings().get_default()
         self.gtk_settings.set_property('gtk-application-prefer-dark-theme', True)
         self.gtk_settings.set_property('gtk-theme-name', 'Adwaita')

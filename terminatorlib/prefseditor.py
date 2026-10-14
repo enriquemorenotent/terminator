@@ -16,7 +16,7 @@ from .keybindings import Keybindings, KeymapError
 from .translation import _
 from .terminator import Terminator
 from .plugin import PluginRegistry
-from .version import APP_NAME
+from .version import APP_NAME, APP_ICON_NAME
 
 from .plugin import KeyBindUtil
 
@@ -221,8 +221,8 @@ class PrefsEditor:
         self.window = self.builder.get_object('prefswin')
 
         icon_theme = Gtk.IconTheme.get_default()
-        if icon_theme.lookup_icon('terminator-preferences', 48, 0):
-            self.window.set_icon_name('terminator-preferences')
+        if icon_theme.lookup_icon(APP_ICON_NAME, 48, 0):
+            self.window.set_icon_name(APP_ICON_NAME)
         else:
             dbg('Unable to load Terminator preferences icon')
             icon = self.window.render_icon(Gtk.STOCK_DIALOG_INFO, Gtk.IconSize.BUTTON)

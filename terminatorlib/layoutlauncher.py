@@ -11,6 +11,7 @@ from .util import dbg, err, spawn_new_terminator
 from . import config
 from .translation import _
 from .terminator import Terminator
+from .version import APP_ICON_NAME
 from .plugin import PluginRegistry
 
 class LayoutLauncher:
@@ -47,8 +48,8 @@ class LayoutLauncher:
         self.window = self.builder.get_object('layoutlauncherwin')
 
         icon_theme = Gtk.IconTheme.get_default()
-        if icon_theme.lookup_icon('terminator-layout', 48, 0):
-            self.window.set_icon_name('terminator-layout')
+        if icon_theme.lookup_icon(APP_ICON_NAME, 48, 0):
+            self.window.set_icon_name(APP_ICON_NAME)
         else:
             dbg('Unable to load Terminator layout launcher icon')
             icon = self.window.render_icon(Gtk.STOCK_DIALOG_INFO, Gtk.IconSize.BUTTON)

@@ -21,4 +21,5 @@ TerminatorVersion supplies our version number.
 
 APP_NAME = 'terminator'
 APP_DISPLAY_NAME = 'Termino'
+APP_ICON_NAME = 'termino'
 APP_VERSION = '2.1.6'
