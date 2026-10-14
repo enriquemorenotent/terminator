@@ -1,0 +1,58 @@
+[global_config]
+  dbus = False
+  handle_size = 3
+  homogeneous_tabbar = False
+  suppress_multiple_term_dialog = False
+  window_decoration_style = dark
+[keybindings]
+[profiles]
+  [[default]]
+    background_color = "#171b24"
+    foreground_color = "#d8dee9"
+    use_system_font = False
+    font = DejaVu Sans Mono 11
+    use_theme_colors = False
+    background_type = solid
+    scrollbar_position = hidden
+    cell_height = 1.12
+    title_hide_sizetext = True
+    title_use_system_font = False
+    title_font = Sans 10
+    title_transmit_fg_color = "#dbe8ff"
+    title_transmit_bg_color = "#2a3850"
+    title_receive_fg_color = "#ffe1aa"
+    title_receive_bg_color = "#493c28"
+    title_inactive_fg_color = "#9ba7b8"
+    title_inactive_bg_color = "#202630"
+    palette = "#303846:#ef8796:#a6d69b:#e8c684:#8eb8f5:#c5a4eb:#85cdd2:#d8dee9:#65738a:#f4a0ab:#bce5b3:#f1d8a5:#b0cefa:#d7bef4:#a8e0e3:#f1f4f9"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+      size = 1100, 720
+    [[[tabs]]]
+      type = Notebook
+      parent = window0
+      labels = Workspace, Shell
+    [[[split]]]
+      type = HPaned
+      parent = tabs
+      order = 0
+      ratio = 0.58
+    [[[left]]]
+      type = Terminal
+      parent = split
+      order = 0
+      profile = default
+    [[[right]]]
+      type = Terminal
+      parent = split
+      order = 1
+      profile = default
+    [[[shell]]]
+      type = Terminal
+      parent = tabs
+      order = 1
+      profile = default
+[plugins]

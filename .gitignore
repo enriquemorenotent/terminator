@@ -19,6 +19,7 @@ remotinatorc
 terminatorlib/meliae
 /dist
 /MANIFEST
+/prototype/.state/
 
 ## language / intltool related files
 .intltool*

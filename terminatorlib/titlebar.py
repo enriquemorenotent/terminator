@@ -2,6 +2,10 @@
 # GPL v2 only
 """titlebar.py - classes necessary to provide a terminal title bar"""
 
+import os
+import re
+import socket
+
 from gi.repository import Gtk, Gdk
 from gi.repository import GObject
 from gi.repository import Pango
@@ -29,6 +33,8 @@ class Titlebar(Gtk.EventBox):
     grouplabel = None
     groupentry = None
     bellicon = None
+    compact_header = False
+    local_hostnames = {socket.gethostname(), socket.getfqdn(), 'localhost'}
 
     __gsignals__ = {
             'clicked': (GObject.SignalFlags.RUN_LAST, None, ()),
@@ -44,6 +50,9 @@ class Titlebar(Gtk.EventBox):
         self.terminator = Terminator()
         self.terminal = terminal
         self.config = self.terminal.config
+        if self.compact_header:
+            self.terminal.vte.connect('notify::current-directory-uri',
+                                      lambda *_: self.update())
 
         self.label = EditableLabel()
         self.label.connect('edit-done', self.on_edit_done)
@@ -83,6 +92,7 @@ class Titlebar(Gtk.EventBox):
         viewport.add(self.label)
 
         hbox = Gtk.HBox()
+        hbox.get_style_context().add_class('terminator-pane-header')
         hbox.pack_start(self.ebox, False, True, 0)
         hbox.pack_start(Gtk.VSeparator(), False, True, 0)
         hbox.pack_start(viewport, True, True, 0)
@@ -110,7 +120,11 @@ class Titlebar(Gtk.EventBox):
             temp_heldtext_str = _('[INACTIVE: Right-Click for Relaunch option] ')
         if not self.config['title_hide_sizetext']:
             temp_sizetext_str = " %s" % (self.sizetext)
-        self.label.set_text("%s%s%s" % (temp_heldtext_str, self.termtext, temp_sizetext_str))
+        title = self.termtext
+        if self.compact_header:
+            title, tooltip = self.compact_title()
+            self.label.set_tooltip_text(tooltip)
+        self.label.set_text("%s%s%s" % (temp_heldtext_str, title, temp_sizetext_str))
 
         if (not self.config['title_use_system_font']) and self.config['title_font']:
             title_font = Pango.FontDescription(self.config['title_font'])
@@ -209,8 +223,38 @@ class Titlebar(Gtk.EventBox):
             self.groupicon.hide()
             return
         
-        self.groupicon.set_from_icon_name(APP_NAME + name, size)
+        if self.compact_header:
+            icons = {
+                '_active_broadcast_all': ('view-grid-symbolic', _('Broadcast to all terminals')),
+                '_active_broadcast_group': ('insert-link-symbolic', _('Broadcast to this group')),
+                '_active_broadcast_off': ('view-dual-symbolic', _('Broadcast off')),
+                '_receive_on': ('go-down-symbolic', _('Receiving broadcast input')),
+                '_receive_off': ('view-dual-symbolic', _('Not receiving broadcast input')),
+            }
+            icon, description = icons.get(name, ('view-dual-symbolic', _('Terminal groups')))
+            self.groupicon.set_from_icon_name(icon, size)
+            self.ebox.set_tooltip_text(description + '\n' + _('Click to manage terminal groups'))
+            self.groupicon.set_margin_start(6)
+            self.groupicon.set_margin_end(4)
+        else:
+            self.groupicon.set_from_icon_name(APP_NAME + name, size)
         self.groupicon.show()
+
+    def compact_title(self):
+        """Show the folder while retaining remote identity and the full title."""
+        original = self.termtext or ''
+        remote = re.match(r'^(?:[^@\s]+@)?([^:\s]+):([~/].*)$', original)
+        if remote and remote[1] not in self.local_hostnames:
+            folder = os.path.basename(remote[2].rstrip('/')) or '/'
+            return '%s: %s' % (remote[1], folder), original
+        path = self.terminal.get_cwd()
+        if not path:
+            return original, original
+        folder = os.path.basename(path.rstrip('/')) or '/'
+        if path == os.path.expanduser('~'):
+            folder = '~'
+        tooltip = path if not original or original == path else '%s\n%s' % (path, original)
+        return folder, tooltip
 
     def update_terminal_size(self, width, height):
         """Update the displayed terminal size"""
